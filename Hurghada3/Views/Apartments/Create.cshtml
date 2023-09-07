@@ -1,0 +1,106 @@
+﻿@model Hurghada3.ViewModels.CreateApartmentViewModel
+
+
+<form asp-action="Create" asp-controller="Apartments" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input type="text" asp-for="Title" class="form-control" placeholder="Title" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input type="text" asp-for="Address" class="form-control" placeholder="Address" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="form-label mb-1 mt-4">Description</label>
+                <textarea asp-for="Description" class="form-control mb-4" rows="3"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="DownPayment" class="control-label"></label>
+                <input type="text" asp-for="DownPayment" class="form-control" placeholder="Down Payment" />
+                <span asp-validation-for="DownPayment" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MonthlyPayment" class="control-label"></label>
+                <input type="text" asp-for="MonthlyPayment" class="form-control" placeholder="Monthly" />
+                <span asp-validation-for="MonthlyPayment" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DailyPayment" class="control-label"></label>
+                <input type="text" asp-for="DailyPayment" class="form-control" placeholder="Daily Payment" />
+                <span asp-validation-for="DailyPayment" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BedRooms" class="control-label"></label>
+                <input type="text" asp-for="BedRooms" class="form-control" placeholder="Bed Rooms" />
+                <span asp-validation-for="BedRooms" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PathRooms" class="control-label"></label>
+                <input type="text" asp-for="PathRooms" class="form-control" placeholder="Bath Rooms" />
+                <span asp-validation-for="PathRooms" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Area" class="control-label"></label>
+                <input type="text" asp-for="Area" class="form-control" placeholder="Area" />
+                <span asp-validation-for="Area" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Levels" class="form-label mt-4"></label>
+                <select class="form-select" asp-for="LevelId" asp-items="@Model.Levels">
+                    <option></option>
+                </select>
+                <span asp-validation-for="Levels" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Amenities" class="form-label mt-4"></label>
+                <select class="form-select" asp-for="SelectedAmenities" asp-items="@Model.Amenities" >
+                    <option></option>
+                </select>
+                <span asp-validation-for="Amenities" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="ApartmentTypes" class="form-label mt-4"></label>
+                <select class="form-select" asp-for="ApartmentTypeId" asp-items="@Model.ApartmentTypes">
+                    <option></option>
+                </select>
+                <span asp-validation-for="ApartmentTypes" class="text-danger"></span>
+            </div>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" asp-for="IsAvailable">
+                <label class="form-check-label" asp-for="IsAvailable"></label>
+                <span asp-validation-for="IsAvailable" class="text-danger"></span>
+            </div>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" asp-for="IsFurnished">
+                <label class="form-check-label" asp-for="IsFurnished"></label>
+                <span asp-validation-for="IsFurnished" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="file" asp-for="ImageUrl" id="Image" class="form-control" />
+                <small class="form-text text-muted">only .jpg,.jpeg,.png Images are allowed</small>
+                <span asp-validation-for="ImageUrl" class="text-danger"></span>
+
+            </div>
+           
+            <button type="submit" class="btn btn-light text-black mt-4">Save</button>
+
+        </div>
+        <div class="col-md-6">
+            <img alt="Image" src="" class="image-preview mt-2 d-none justify-content-center overflow-hidden" />
+
+        </div>
+    </div>
+   
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/js/apartment-form.js"></script>
+}
